@@ -1,0 +1,31 @@
+import Link from "next/link";
+
+const Navbar = () => {
+  return (
+    <>
+      <nav className="hidden md:flex items-center space-x-6">
+        <Link
+          className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
+          href={"/about"}
+        >
+          About
+        </Link>
+
+        <Link
+          className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
+          href={"/products"}
+        >
+          Products
+        </Link>
+        <Link
+          className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
+          href={"/products/search"}
+        >
+          Search
+        </Link>
+      </nav>
+    </>
+  );
+};
+
+export default Navbar;

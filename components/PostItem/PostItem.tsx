@@ -14,7 +14,7 @@ const PostItem = ({ post }: TPostProps) => {
       <h2 className="text-2xl font-bold text-green-400 line-clamp-1">
         {post.title}
       </h2>
-      <p className="text-sm text-gray-600 line-clamp-1">{post.content}</p>
+      <p className="text-sm text-gray-600 line-clamp-1">{post.body}</p>
       <Link href={`/posts/${post.id}`}>Read More...</Link>
     </div>
   );

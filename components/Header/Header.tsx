@@ -26,7 +26,7 @@ const Header = () => {
             )}
           </button>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             <button className="bg-blue-600 hover:bg-blue-800 text-white rounded-md px-4 py-2 ">
               <Link href={"/login"}>Login</Link>
             </button>

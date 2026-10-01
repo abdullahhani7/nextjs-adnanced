@@ -13,15 +13,15 @@ const Navbar = () => {
 
         <Link
           className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
-          href={"/products"}
+          href={"/posts"}
         >
-          Products
+          Posts
         </Link>
         <Link
           className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
-          href={"/products/search"}
+          href={"/contact"}
         >
-          Search
+          contact
         </Link>
       </nav>
     </>

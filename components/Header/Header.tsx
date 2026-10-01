@@ -18,7 +18,10 @@ const Header = () => {
           </Link>
           <Navbar />
 
-          <button className="md:hidden" onClick={() => setIsOpen((prev) => !prev)}>
+          <button
+            className="md:hidden"
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
             {isOpen ? (
               <IoClose className="w-6 h-6" />
             ) : (
@@ -36,7 +39,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {isOpen && ( 
+      {isOpen && (
         <nav className="md:hidden flex flex-col items-center space-y-6 mt-4 pb-4">
           <Link
             className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
@@ -47,15 +50,15 @@ const Header = () => {
 
           <Link
             className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
-            href={"/products"}
+            href={"/posts"}
           >
-            Products
+            Posts
           </Link>
           <Link
             className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
-            href={"/products/search"}
+            href={"/contact"}
           >
-            Search
+            Contact
           </Link>
         </nav>
       )}

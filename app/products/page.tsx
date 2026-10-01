@@ -2,8 +2,11 @@ import PostItem from "@/components/PostItem/PostItem";
 import { TPostsResponse } from "../_utils/types";
 
 const Page = async () => {
-  const res = await fetch("https://dummyjson.com/posts");
+  const res = await fetch("https://dummyjson.com/oposts");
 
+  if (!res.ok) {
+    throw new Error("Failed to get data!!sss");
+  }
   const data: TPostsResponse = await res.json();
 
   const posts = data.posts;

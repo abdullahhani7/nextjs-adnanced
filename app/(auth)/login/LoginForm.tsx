@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -9,8 +10,8 @@ const LoginForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === "") return alert("Email is Required!");
-    if (password === "") return alert("Password is Required!");
+    if (email === "") return toast.warn("Email is required");
+    if (password === "") return toast.warn("Password is required");
   };
 
   return (

@@ -1,7 +1,9 @@
+import HomePage from "@/components/HomePage/HomePage";
+
 export default function Home() {
   return (
     <>
-      <h1>Next.js</h1>
+      <HomePage />
     </>
   );
 }

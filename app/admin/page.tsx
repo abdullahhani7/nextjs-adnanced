@@ -1,8 +1,11 @@
+import AdminPostForm from "./AdminPostForm"
 
-const page = () => {
+const AdminPage = () => {
   return (
-    <div>page</div>
+    <div>
+      <AdminPostForm />
+    </div>
   )
 }
 
-export default page
+export default AdminPage

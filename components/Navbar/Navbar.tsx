@@ -23,6 +23,12 @@ const Navbar = () => {
         >
           contact
         </Link>
+        <Link
+          className="text-gray-600 hover:text-blue-600 transition-colors capitalize"
+          href={"/admin"}
+        >
+          Admin
+        </Link>
       </nav>
     </>
   );

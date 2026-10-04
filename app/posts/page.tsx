@@ -6,17 +6,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Page = () => {
-  // const res = await fetch("https://dummyjson.com/posts", {
-  //   cache: "no-store",
-  // });
-
-  // if (!res.ok) {
-  //   throw new Error("Failed to get data!!sss");
-  // }
-  // const data: TPostsResponse = await res.json();
-
-  // const posts = data.posts;
-
   const [posts, setPosts] = useState<TPost[]>([]);
 
   const getPosts = async () => {

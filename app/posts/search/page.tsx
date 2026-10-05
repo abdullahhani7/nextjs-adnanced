@@ -1,8 +1,9 @@
+const page = async (props: any) => {
+  const searchParams = await props.searchParams;
 
-const page = () => {
-  return (
-    <div>search page</div>
-  )
-}
+  console.log(searchParams.query);
 
-export default page
+  return <div>Search value is: {searchParams.query}</div>;
+};
+
+export default page;

@@ -1,11 +1,8 @@
 type TPost = {
+  userId: number;
   id: number;
   title: string;
   body: string;
 };
 
-type TPostsResponse = {
-  posts: TPost[];
-};
-
-export type { TPostsResponse, TPost };
+export type { TPost };

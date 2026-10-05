@@ -1,11 +1,18 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const SearchPostInput = () => {
+  const router = useRouter();
   const [searchText, setSearchText] = useState("");
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push("/posts/search");
+  };
+
   return (
-    <form className="my-4 mx-auto w-full md:w-2/3">
+    <form onSubmit={handleSubmit} className="my-4 mx-auto w-full md:w-2/3">
       <input
         type="search"
         id="search"

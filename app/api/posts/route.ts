@@ -1,4 +1,5 @@
 import { posts } from "@/app/_utils/data";
+import { ICreatedPostDTO } from "@/app/_utils/dto";
 import { TPost } from "@/app/_utils/types";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -9,7 +10,8 @@ export const GET = (request: NextRequest) => {
 };
 
 export const POST = async (request: NextRequest) => {
-  const body = await request.json();
+  const body = (await request.json()) as ICreatedPostDTO;
+  console.log(body)
 
   const newPost: TPost = {
     id: posts.length + 1,
@@ -20,5 +22,5 @@ export const POST = async (request: NextRequest) => {
 
   posts.push(newPost);
 
-  return NextResponse.json(posts, { status: 201 });
+  return NextResponse.json(newPost, { status: 201 });
 };

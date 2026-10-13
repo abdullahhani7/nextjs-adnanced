@@ -1,6 +1,6 @@
 interface ICreatedPostDTO {
   title: string;
-  body: string;
+  content: string;
 }
 interface IUpdatedPostDTO {
   title: string;

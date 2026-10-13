@@ -1,9 +1,10 @@
 import { posts } from "@/app/_utils/data";
 import { ICreatedPostDTO } from "@/app/_utils/dto";
-import { TPost } from "@/app/_utils/types";
+import { prisma } from "@/app/_utils/lib/prisma";
+import { createPostSchema } from "@/app/_utils/validation";
+import { Post } from "@/app/generated/prisma/client";
 
 import { NextRequest, NextResponse } from "next/server";
-import z, { string } from "zod";
 
 export const GET = (request: NextRequest) => {
   // console.log(request);
@@ -13,11 +14,6 @@ export const GET = (request: NextRequest) => {
 export const POST = async (request: NextRequest) => {
   const body = (await request.json()) as ICreatedPostDTO;
   // console.log(body);
-
-  const createPostSchema = z.object({
-    title: string().min(5, "Title must be at least 5 characters").max(100),
-    body: string().min(10),
-  });
 
   const validation = createPostSchema.safeParse(body);
   // console.log("validationnnn", validation.error);
@@ -29,14 +25,19 @@ export const POST = async (request: NextRequest) => {
     );
   }
 
-  const newPost: TPost = {
-    id: posts.length + 1,
-    userId: 5,
-    title: body.title,
-    body: body.body,
-  };
+  // const newPost: TPost = {
+  //   id: posts.length + 1,
+  //   userId: 5,
+  //   title: body.title,
+  //   body: body.body,
+  // };
 
-  posts.push(newPost);
+  const newPost: Post = await prisma.post.create({
+    data: {
+      title: body.title,
+      content: body.content,
+    },
+  });
 
   return NextResponse.json(newPost, { status: 201 });
 };

@@ -4,7 +4,7 @@ interface ICreatedPostDTO {
 }
 interface IUpdatedPostDTO {
   title: string;
-  body: string;
+  content: string;
 }
 
 export type { ICreatedPostDTO, IUpdatedPostDTO };

@@ -44,15 +44,36 @@ export const PUT = async (
 
   //   console.log("id", id);
 
-  const post = posts.find((p) => p.id === parseInt(id));
+  try {
+    const data = (await request.json()) as IUpdatedPostDTO;
 
-  const data = (await request.json()) as IUpdatedPostDTO;
+    const post = await prisma.post.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+    });
 
-  if (!post) {
-    return NextResponse.json({ message: "Post not found" }, { status: 404 });
+    if (!post) {
+      return NextResponse.json({ message: "Post not found" }, { status: 404 });
+    }
+
+    const updatedPost = await prisma.post.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: {
+        title: data.title,
+        content: data.content,
+      },
+    });
+
+    return NextResponse.json(updatedPost, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Internal server error" },
+      { status: 500 },
+    );
   }
-
-  return NextResponse.json({ message: "post updates" }, { status: 200 });
 };
 
 // DELETE Single Post

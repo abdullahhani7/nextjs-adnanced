@@ -8,21 +8,23 @@ export const POST = async (request: NextRequest) => {
   try {
     const body = (await request.json()) as IRegisterUserDTO;
 
-    const createdNewUserSchema = z.object({
+    const createdNewUserValidation = z.object({
       username: z.string().min(5).max(15),
       email: z.string().min(5).max(40),
       password: z.string().min(6).max(30),
     });
 
-    const validation = createdNewUserSchema.safeParse(body);
+    const validation = createdNewUserValidation.safeParse(body);
 
     if (!validation.success) {
       return NextResponse.json({ message: validation.error.issues[0].message });
     }
 
+    const { email, password } = validation.data;
+
     const user = await prisma.user.findUnique({
       where: {
-        email: body.email,
+        email,
       },
     });
 
@@ -36,7 +38,7 @@ export const POST = async (request: NextRequest) => {
     }
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(body.password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUserData = await prisma.user.create({
       data: {

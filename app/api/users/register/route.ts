@@ -27,7 +27,7 @@ export const POST = async (request: NextRequest) => {
     });
 
     if (user) {
-      NextResponse.json(
+      return NextResponse.json(
         {
           message: "user is already existed",
         },

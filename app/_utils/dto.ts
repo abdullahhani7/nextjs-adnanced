@@ -13,4 +13,14 @@ interface IRegisterUserDTO {
   password: string;
 }
 
-export type { ICreatedPostDTO, IUpdatedPostDTO, IRegisterUserDTO };
+interface ILoginUserDTO {
+  email: string;
+  password: string;
+}
+
+export type {
+  ICreatedPostDTO,
+  IUpdatedPostDTO,
+  IRegisterUserDTO,
+  ILoginUserDTO,
+};

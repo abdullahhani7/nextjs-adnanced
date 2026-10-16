@@ -44,6 +44,12 @@ export const POST = async (request: NextRequest) => {
         email: body.email,
         password: hashedPassword,
       },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        isAdmin: true,
+      },
     });
 
     return NextResponse.json(newUserData, { status: 201 });

@@ -1,5 +1,6 @@
 import { IRegisterUserDTO } from "@/app/_utils/dto";
 import { prisma } from "@/app/_utils/lib/prisma";
+import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
 
@@ -34,11 +35,14 @@ export const POST = async (request: NextRequest) => {
       );
     }
 
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(body.password, salt);
+
     const newUserData = await prisma.user.create({
       data: {
         username: body.username,
         email: body.email,
-        password: body.password,
+        password: hashedPassword,
       },
     });
 

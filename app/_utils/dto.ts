@@ -7,4 +7,10 @@ interface IUpdatedPostDTO {
   content: string;
 }
 
-export type { ICreatedPostDTO, IUpdatedPostDTO };
+interface IRegisterUserDTO {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export type { ICreatedPostDTO, IUpdatedPostDTO, IRegisterUserDTO };
